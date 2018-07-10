@@ -3,19 +3,17 @@
 .. image:: https://travis-ci.org/lsst-dm/dmtn-088.svg
    :target: https://travis-ci.org/lsst-dm/dmtn-088
 
-########################
-'As-is HSC Reprocessing'
-########################
+######################
+As-is HSC Reprocessing
+######################
 
 DMTN-088
 --------
 
-As-is HSC Reprocessing
+As-is procedures for HSC reprocessing as of Spring 2018
 
 **Links**
 
-
-- Accepted version on DocuShare: 'https://ls.st/dmtn-088'
 
 - Live drafts: https://dmtn-088.lsst.io
 - GitHub: https://github.com/lsst-dm/dmtn-088
