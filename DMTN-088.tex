@@ -121,11 +121,13 @@ handled as described in \S \ref{sec:scenarios}.
 Generated data products include single frame processing products,
 coaddition products, and multiband products, and, upon successful
 completion of a campaign, are made available through the LSST
-developer infrastructure at NCSA. Management of derived datasets
-is done at the X level; individuals files are not managed, as would
-be the case in a production system in which records of location,
-metadata and provenance are used to centrally manage data. Results
-of the four most recent successful runs are retained.  Datasets are
+developer infrastructure at NCSA.  For HSC processing campaigns,
+LDF currently manages derived datasets as a site file system;
+individuals files are managed by users. When we transition to formal
+production processing of LSST data, LDF will be responsible for
+managing the location, metadata and provenance records of each file,
+and production data will be centrally managed in the Data Backbone.
+Results of the four most recent successful runs are retained.  Datasets are
 disposed of after they are superseded by the next campaign.
 
 Currently, though temporarily, six QC/QA prototype pipelines from the
