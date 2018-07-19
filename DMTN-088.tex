@@ -130,24 +130,24 @@ and production data will be centrally managed in the Data Backbone.
 Results of the four most recent successful runs are retained.  Datasets are
 disposed of after they are superseded by the next campaign.
 
-Currently, though temporarily, six QC/QA prototype pipelines from the
+Currently, though temporarily, some QC/QA prototype pipelines from the
 \texttt{pipe\_analysis} and \texttt{validate\_drp} packages are included in
 the biweekly runs. The \texttt{pipe\_analysis} package is not in the official
 stack of \texttt{lsst\_distrib} and was not designed to be included in the
 official stack in the first place; however, its outputs are essential
-for pipeline development and QA work (DMTN-074) and no replacement
+for pipeline development and QA work (\citeds{DMTN-074}) and no replacement
 is available yet at time of writing.  Neither \texttt{pipe\_analysis} nor
 \texttt{validate\_drp} follow the standard \texttt{pipe\_base}
 \texttt{CmdLineTask} framework or the standard Butler usage for data IO.
 
-How the these QC/QA packages will evolve in the long term is a
-subject of discussions in DMLT and the QA working group. When the
-DM-wide QC/QA plans are clarified, we will run only the QC/QA packages
-blessed officially. Before such a plan exists and the packages are
-standardized, the LDF staff will continue to work closely with Lauren MacArthur
-(\texttt{pipe\_analysis}), Michael Wood-Vasey (\texttt{validate\_drp}), and
-Angelo Fausti (\texttt{dispatch\_verify} for uploading metrics to SQuaSH) for
-emergent issues.  As QC output products are not as well-defined, the LDF
+How the these QC/QA packages will evolve in the long term is a subject of
+discussions in DMLT and the QA working group (\citeds{LDM-622}, \jira{RFC-476}).
+When the DM-wide QC/QA plans are clarified, we will run only the QC/QA packages
+blessed officially. Before such a plan exists and the packages are standardized,
+the operations staff will work closely with the specific pipeline owners
+(Table \ref{tab:liaison}) for emergent issues, and remove problematic
+QC/QA pipelines from the campaign as necessary (also see \S \ref{sec:scenarios}).
+As QC output products are not as well-defined, the operations
 staff does not track down outputs as diligently as the official products,
 and consider the jobs done as long as no fatal errors appear.  In
 the short term, adding automatic tests by running \texttt{pipe\_analysis}
@@ -217,8 +217,8 @@ problems.
   \texttt{pipe\_analysis},
   needed to be updated and built manually. If they cannot be built,
   for example because the unit tests of \texttt{meas\_mosaic} failed, a
-  ticket will be filed so the DRP team can fix it. Meanwhile I start
-  the first processing step which does not need \texttt{meas\_mosaic}. Since
+  ticket will be filed so the DRP team can fix it. Meanwhile the first
+  processing step which does not need \texttt{meas\_mosaic} could start. Since
   \texttt{w\_2018\_13}, \texttt{meas\_mosaic} has been added to be part of the
   \texttt{lsst\_distrib} weekly release.  So only one package,
   \texttt{pipe\_analysis}, needs special care.
@@ -256,16 +256,23 @@ problems.
   \item \textbf{Reproducible fatal errors from the pipeline: report,
   apply fix if available quickly}
 
-  Occasionally, the weekly stack is broken and does not allow the
-  job to finish.  I will verify if the failure is reproducible, and
+  Occasionally, the weekly stack is broken and does not allow the job to
+  finish. The operations staff will verify if the failure is reproducible, and
   report to the Slack channel \#dm-hsc-reprocessing for the DRP team
-  to respond.  Sometimes the bug is obvious, such as one from recent
+  or the specific pipeline owners (Table \ref{tab:liaison})
+  to respond. Jira tickets containing the error messages will be
+  filed, and the operations staff can then choose to abort the
+  part of the campaign that depend on the data from the failed
+  pipelines.  Sometimes the bug is obvious, such as one from recent
   API changes or new features not caught by the standard CI tools;
   in this case a fix can be available quickly especially with the
   help of the developer who added the new feature.  If a fix is
-  available within a day, I will use the fix and re-do the execution.
-  If the fix is not available shortly, I may pause the campaign
-  (although this hasn’t happened so far; developers are always
+  available within a day, the operations staff may continue the
+  execution using a new software version with the fix applied.  If
+  the fix is not available shortly, the operations staff may pause
+  or cancel the campaign.
+  (At the time of writing, no biweekly campaign has been aborted
+  so far despite the occasional fatal bugs; developers have been
   helpful.)
 
   \item \textbf{Reproducible non-fatal errors from the pipeline:
@@ -284,6 +291,15 @@ problems.
 
 \end{itemize}
 
+\appendix
+
+\section{Current Science Pipelines Payload}
+
+In Table \ref{tab:liaison}, we list the pipelines currently included
+in the biweekly campaigns (\S \ref{sec:rc}) and their corresponding
+contacts. The contact may delegate the debugging responsibility to
+other team members.
+\input{tableLiaison}
 
 % Include all the relevant bib files.
 % https://lsst-texmf.lsst.io/lsstdoc.html#bibliographies
