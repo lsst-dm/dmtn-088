@@ -148,10 +148,12 @@ the operations staff will work closely with the specific pipeline owners
 (Table \ref{tab:liaison}) for emergent issues, and remove problematic
 QC/QA pipelines from the campaign as necessary (also see \S \ref{sec:scenarios}).
 As QC output products are not as well-defined, the operations
-staff does not track down outputs as diligently as the official products,
+staff does not track down individual outputs until the official products
+are formally defined and documented,
 and consider the jobs done as long as no fatal errors appear.  In
-the short term, adding automatic tests by running \texttt{pipe\_analysis}
-in the \texttt{ci\_hsc} package can reduce obvious breakages.
+the short term, adding automatic CI tests for any QC pipelines,
+such as running \texttt{pipe\_analysis}
+in the \texttt{ci\_hsc} package, can reduce obvious breakages.
 
 \section{PDR1-scale reprocessing}
 \label{sec:pdr1}
@@ -287,7 +289,12 @@ problems.
   will be helpful to provide scientific metrics of the data products
   during the campaign execution, and may provide additional feedbacks
   on whether a campaign needs to be paused or specific inputs need
-  to be removed.
+  to be removed. Currently, only QC metrics from the single frame
+  processing are uploaded to the SQuaSH dashboard \footnote{The metrics
+  are uploaded to \url{https://squash.lsst.codes} using the
+  \texttt{dispatch\_verify.py} tool as listed in Table \ref{tab:liaison}.};
+  further QC metrics will be calculated and uploaded once the responsible
+  pipelines are ready.
 
 \end{itemize}
 
